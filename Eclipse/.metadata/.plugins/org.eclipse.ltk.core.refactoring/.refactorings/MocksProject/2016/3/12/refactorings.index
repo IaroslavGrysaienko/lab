@@ -1,0 +1,13 @@
+1458142193365	Rename local variable 's'
+1458143804615	Rename local variable 'key'
+1458145339962	Rename local variable 'x'
+1458146655482	Delete element
+1458157767919	Rename local variable 'string'
+1458158122090	Extract method 'addString'
+1458225295108	Copy compilation units
+1458225321070	Delete elements
+1458225343998	Move compilation units
+1458225362147	Move compilation unit
+1458306621416	Rename local variable 'trimmedString'
+1458307205332	Rename local variable 'splited'
+1458307243041	Rename local variable 'trimmedStrings'

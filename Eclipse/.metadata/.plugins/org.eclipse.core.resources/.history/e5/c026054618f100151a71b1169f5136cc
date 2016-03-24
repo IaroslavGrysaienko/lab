@@ -1,0 +1,142 @@
+package classes;
+
+import java.rmi.NoSuchObjectException;
+import java.util.Queue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * класс предлагающий автодополнение по двум первым введенным буквам.
+ * 
+ * @author Iaroslav_Grytsaienko
+ *
+ */
+public class PrefixMatcher {
+
+	private Trie trie;
+
+	/**
+	 * Constructor
+	 */
+	public PrefixMatcher() {
+		trie = new RWayTrie();
+	}
+
+	/**
+	 * ‘ормирует in-memory словарь слов. ћетод принимает слово, строку, массив
+	 * слов/строк. ≈сли приходит строка, то она разбиваетс€ на слова по
+	 * пробелам. ¬ словарь должны добавл€тьс€ слова длиннее 2х символов.
+	 * ѕредполагаетс€ что знаки пунктуации отсутствуют.
+	 * 
+	 * @param strings
+	 * @return
+	 */
+	public int add(String... strings) {
+
+		for (String str : strings) {
+			String[] splitedStr = str.trim().split("\\s");
+			for (String splStr : splitedStr) {
+				addString(splStr);
+			}
+		}
+		return trie.size();
+	}
+
+	/**
+	 * Inserts words started only with letter with at least 3 symbols length.
+	 * Convert all letters of the words to lower-case letters.
+	 * 
+	 * @param str
+	 *            input word
+	 */
+	private void addString(String str) {
+		if (!str.isEmpty() && str.charAt(0) > 64 && str.length() > 2) {
+			trie.add(new Tuple(str.toLowerCase()));
+		}
+	}
+
+	/**
+	 * есть ли слово в словаре
+	 * 
+	 * @param word
+	 * @return
+	 */
+	public boolean contains(String word) {
+		return trie.contains(word);
+	}
+
+	/**
+	 * удал€ет слово из словар€
+	 * 
+	 * @param word
+	 * @return
+	 */
+	public boolean delete(String word) {
+		return trie.delete(word);
+	}
+
+	/**
+	 * к-во слов в словаре
+	 * 
+	 * @return
+	 */
+	public int size() {
+		return trie.size();
+	}
+
+	/**
+	 * если введенный pref длиннее или равен 2м символам, то возвращает набор
+	 * слов k разных длин начина€ с минимальной, и начинающихс€ с данного
+	 * префикса pref. ѕример, даны слова следующей длины и pref='abc': abc 3
+	 * abcd 4 abce 4 abcde 5 abcdef 6 - при k=1 возвращаютс€ 'abc' - при k=2
+	 * возвращаютс€ 'abc', 'abcd', 'abce' - при k=3 возвращаютс€ 'abc', 'abcd',
+	 * 'abce', 'abcde' - при k=4 возвращаютс€ 'abc', 'abcd', 'abce', 'abcde',
+	 * 'abcdef'
+	 * 
+	 * @param pref
+	 * @param k
+	 * @return
+	 * @throws NoSuchObjectException
+	 */
+
+	public Iterable<String> wordsWithPrefix(String pref, int k) throws NoSuchObjectException {
+		return getWordsByPrefAndLength(pref, k);
+	}
+
+	/**
+	 * Get words out from trie by pref and specified index k
+	 * @param pref - prefix of the words
+	 * @param k = length + 2 of the words
+	 * @return LinkedList<Strings>
+	 */
+	private Iterable<String> getWordsByPrefAndLength(String pref, int k) {
+		
+		if (pref.length() < 2) {
+			throw new IllegalArgumentException("pref length is more than 2");
+		} else if (k < 1) {
+			throw new IllegalArgumentException("k must bee more than 0");
+		} else {
+			Queue<String> words = (Queue<String>) trie.wordsWithPrefix(pref);
+			for (String word : words) {
+				if (word.length() > k + 2) {
+					words.remove(word);
+				}
+			}
+			return words;
+		}
+	}
+
+	/**
+	 * если введенный pref длиннее или равен 2м символам, то возвращает набор
+	 * слов k=3 разных длин начина€ с минимальной, и начинающихс€ с данного
+	 * префикса pref.
+	 * 
+	 * @param pref
+	 * @return
+	 * @throws NoSuchObjectException 
+	 */
+	//
+	public Iterable<String> wordsWithPrefix(String pref){
+		return getWordsByPrefAndLength(pref, 0);
+	}
+}

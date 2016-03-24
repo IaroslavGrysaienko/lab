@@ -1,0 +1,46 @@
+package runner;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.regex.Pattern;
+
+import javax.swing.plaf.synth.SynthStyleFactory;
+
+import classes.PrefixMatcher;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		Runner runner = new Runner();
+		String str = runner.readTestFile();
+		PrefixMatcher prefMatcher = new PrefixMatcher();
+		//System.out.println(prefMatcher.size());
+	}
+
+	private String readTestFile() {
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+		try {
+			FileReader fr = new FileReader("src\\main\\resources\\TestFile.txt");
+			br = new BufferedReader(fr);
+
+			String line = br.readLine();
+
+			while (line != null) {
+				sb.append(line);
+				sb.append(System.lineSeparator());
+				line = br.readLine();
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		return sb.toString();
+	}
+}

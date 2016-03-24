@@ -1,0 +1,53 @@
+/**
+ * 
+ */
+package classes;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+/**
+ * @author Iaroslav_Grytsaienko
+ *
+ */
+public class PrefixMatcherTest {
+	private PrefixMatcher prefMatcher;
+		/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		prefMatcher = new PrefixMatcher();
+		prefMatcher.add("a ab abc abc abcdx abcdxs  asdasdawdsd	");
+		prefMatcher.add("abcds", "abcdw");
+		String[] strMass = {"abb","abbc"};
+		prefMatcher.add(strMass);
+		
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void test() {
+		
+	}
+	
+	@Test
+	public void containsTEst() {
+
+		assertTrue(prefMatcher.contains("abc"));
+		assertTrue(prefMatcher.contains("abcd"));
+		assertTrue(prefMatcher.contains("abcdxs"));
+		assertTrue(prefMatcher.contains(""));
+	}
+}
