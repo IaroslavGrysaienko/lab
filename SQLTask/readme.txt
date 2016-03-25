@@ -1,0 +1,4 @@
+-- полезные ссылки 
+--https://msdn.microsoft.com/ru-ru/library/ms186734%28v=sql.120%29.aspx
+--https://msdn.microsoft.com/ru-ru/library/ms175972%28v=SQL.100%29.aspx
+--https://msdn.microsoft.com/ru-ru/library/bb510741%28v=sql.100%29.aspx

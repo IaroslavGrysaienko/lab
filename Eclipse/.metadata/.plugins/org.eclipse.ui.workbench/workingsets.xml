@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458918654981_1" label="MocksProject" name="MocksProject">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MocksProject" type="4"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1457629306111_0" label="Window Working Set" name="Aggregate for window 1457629306110"/>
 </workingSetManager>

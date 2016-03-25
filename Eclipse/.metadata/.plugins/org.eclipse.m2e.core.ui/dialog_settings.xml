@@ -2,13 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="com.iagr"/>
 		</list>
 		<list key="name">
-			<item value="Mocks Project"/>
 		</list>
 		<list key="artifactId">
-			<item value="MocksProject"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -40,6 +37,19 @@
 		<item value="167" key="y"/>
 		<item value="530" key="height"/>
 	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\Iaroslav_Grytsaienko@epam.com\Documents\JavaPoolRepository\epm-rdk1\Iaroslav_Grytsaienko\MocksProject"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
 	<section name="MavenProjectWizardArchetypePage">
 		<item value="All Catalogs" key="catalog"/>
 		<list key="projectNameTemplate">
@@ -65,10 +75,8 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="task1"/>
 		</list>
 		<list key="groupId">
-			<item value="task1 "/>
 		</list>
 		<list key="artifactId">
 		</list>
